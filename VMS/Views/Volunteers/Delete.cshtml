@@ -1,0 +1,168 @@
+﻿@model VMS.Models.VolunteerModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>VolunteerModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Center)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Center)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interests)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Availability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Availability)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Licenses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Licenses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMCname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMCname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMCphone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMCphone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMCemail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMCemail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMCaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMCaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriversLicenseOnFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriversLicenseOnFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialCardOnFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SocialCardOnFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalStatus)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
