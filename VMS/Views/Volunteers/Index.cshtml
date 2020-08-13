@@ -125,9 +125,10 @@
             @Html.DisplayFor(modelItem => item.ApprovalStatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Email }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Email }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Email })
+            @Html.ActionLink("Matches", "Matches", new { interests = item.Interests }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.Email }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Email }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Email })
         </td>
     </tr>
 }

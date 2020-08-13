@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -122,6 +123,25 @@ namespace VMS.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Matches(string interests)
+        {
+            //Properties to match: Centers, Availability, interests
+
+            using (OpportunityContext oc = new OpportunityContext()) {
+                var temp = interests.Split(',');
+                List<OpportunityModel> interest_matches = new List<OpportunityModel>();
+
+
+                foreach (var item in temp)
+                {
+                    interest_matches.AddRange(oc.Opportunities.Where(o => o.Tags.Contains(item)).ToList());
+                    //oc.Opportunities.Where(o => o.Tags.Contains(item)).ToList();
+                }
+                return View(interest_matches.Distinct());
+            }
+
         }
     }
 }

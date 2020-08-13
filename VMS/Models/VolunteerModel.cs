@@ -39,5 +39,6 @@ namespace VMS.Models
         }
 
         public DbSet<VolunteerModel> Volunteers { get; set; }
+
     }
 }
