@@ -4,11 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>List of Volunteers</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <select name="filter" id="filter">
+        <option value="approved">Approved</option>
+        <option value="pending">Pending</option>
+    </select>
+    <input type="submit" value="Filter" />
+}
 <table class="table">
     <tr>
         <th>
@@ -18,119 +26,120 @@
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         @**<th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Center)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Interests)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Availability)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Center)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interests)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Availability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Education)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Licenses)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMCname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMCphone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMCemail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMCaddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DriversLicenseOnFile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SocialCardOnFile)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Education)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Licenses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMCname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMCphone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMCemail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMCaddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriversLicenseOnFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SocialCardOnFile)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ApprovalStatus)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Center)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Interests)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Availability)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Education)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Licenses)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMCname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMCphone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMCemail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMCaddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DriversLicenseOnFile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SocialCardOnFile)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.ApprovalStatus)
-        </td>
-        <td>
-            @Html.ActionLink("Matches", "Matches", new { interests = item.Interests }) |
-            @Html.ActionLink("Edit", "Edit", new { id = item.Email }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Email }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Email })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Center)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Interests)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Availability)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Education)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Licenses)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMCname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMCphone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMCemail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMCaddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriversLicenseOnFile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SocialCardOnFile)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovalStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Matches", "Matches", new { centers = item.Center, interests = item.Interests }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Email }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Email }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Email })
+            </td>
+        </tr>
+    }
 
 </table>

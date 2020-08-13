@@ -18,6 +18,24 @@ namespace VMS.Controllers
         // GET: Volunteers
         public ActionResult Index()
         {
+            Debug.WriteLine("Imagine using POST lol");
+            return View(db.Volunteers.ToList());
+        }
+
+        // POST: Volunteers
+        [HttpPost]
+        public ActionResult Index(string filter)
+        {
+            Debug.WriteLine(filter);
+            if(filter == "approved")
+            {
+                return View(db.Volunteers.Where(o => o.ApprovalStatus == "approved").ToList());
+            }
+            else if(filter == "pending")
+            {
+                return View(db.Volunteers.Where(o => o.ApprovalStatus == "pending").ToList());
+            }
+
             return View(db.Volunteers.ToList());
         }
 
@@ -125,21 +143,34 @@ namespace VMS.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Matches(string interests)
+        public ActionResult Matches(string centers, string interests)
         {
             //Properties to match: Centers, Availability, interests
+            //Current just interests and Centers are matched with the opportunity tags
 
             using (OpportunityContext oc = new OpportunityContext()) {
-                var temp = interests.Split(',');
-                List<OpportunityModel> interest_matches = new List<OpportunityModel>();
+                var interest_list = interests.Split(',');
+                var center_list = centers.Split(',');
+
+                List<OpportunityModel> matches = new List<OpportunityModel>();
+                //List<OpportunityModel> interest_matches = new List<OpportunityModel>();
+                //List<OpportunityModel> center_matches = new List<OpportunityModel>();
 
 
-                foreach (var item in temp)
+                foreach (var item in interest_list)
                 {
-                    interest_matches.AddRange(oc.Opportunities.Where(o => o.Tags.Contains(item)).ToList());
-                    //oc.Opportunities.Where(o => o.Tags.Contains(item)).ToList();
+                    //interest_matches.AddRange(oc.Opportunities.Where(o => o.Tags.Contains(item)).ToList());
+
+                    foreach (var place in center_list)
+                    {
+                        matches.AddRange(oc.Opportunities.Where(o => (o.Center.Contains(place)) && (o.Tags.Contains(item))).ToList());
+                    }
                 }
-                return View(interest_matches.Distinct());
+
+                //matches.AddRange(interest_matches);
+                //matches.AddRange(center_matches);
+
+                return View(matches.Distinct());
             }
 
         }
