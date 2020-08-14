@@ -67,5 +67,11 @@ namespace VMS.Controllers
                 }
             }
         }
+
+        public ActionResult Logoff()
+        {
+            Session["Account"] = null;
+
+        }
     }
 }
