@@ -21,16 +21,36 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Volunteers", "Index", "Volunteers")</li>
                     <li>@Html.ActionLink("Opportunities", "Index", "Opportunity")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["Account"] != null)
+                    {
+                        <li>@Html.ActionLink("Log off", "Logoff", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Log in", "Login", "Home")</li>
+                    }
+
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
+        @using VMS.Models
+        @if (Session["Account"] != null)
+        {
+            AccountModel acc = (AccountModel)Session["Account"];
+            if (acc.Role == "Admin")
+            {
+                <button type="button" onclick="location.href='@Url.Action("Index", "Volunteers")'">Manage Volunteers</button>
+                <button type="button" onclick="location.href='@Url.Action("Index", "Opportunity")'">Manage Opportunities</button>
+            }
+        }
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

@@ -11,11 +11,33 @@
 </p>
 @using (Html.BeginForm())
 {
-    <select name="filter" id="filter">
-        <option value="approved">Approved</option>
+<select name="filter" id="filter" onchange="this.form.submit()">
+    @if (ViewData["filter"] != null)
+    {
+        if (ViewData["filter"].ToString() == "approved")
+        {
+            <option value="approved" selected>Approved</option>
+        }
+        else
+        {
+            <option value="approved">Approved</option>
+        }
+        if (ViewData["filter"].ToString() == "pending")
+        {
+            <option value="pending" selected>Pending</option>
+        }
+        else
+        {
+            <option value="pending">Pending</option>
+        }
+    }
+    else
+    {
+        <option value="approved" selected>Approved</option>
         <option value="pending">Pending</option>
-    </select>
-    <input type="submit" value="Filter" />
+    }
+
+</select>
 }
 <table class="table">
     <tr>

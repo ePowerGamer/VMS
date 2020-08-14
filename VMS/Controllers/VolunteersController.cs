@@ -26,7 +26,7 @@ namespace VMS.Controllers
         [HttpPost]
         public ActionResult Index(string filter)
         {
-            Debug.WriteLine(filter);
+            ViewData["filter"] = filter;
             if(filter == "approved")
             {
                 return View(db.Volunteers.Where(o => o.ApprovalStatus == "approved").ToList());
