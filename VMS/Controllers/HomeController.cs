@@ -71,7 +71,7 @@ namespace VMS.Controllers
         public ActionResult Logoff()
         {
             Session["Account"] = null;
-
+            return View("Index" );
         }
     }
 }

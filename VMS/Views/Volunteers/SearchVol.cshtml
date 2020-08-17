@@ -1,0 +1,47 @@
+﻿@model IEnumerable<VMS.Models.VolunteerModel>
+@{
+    ViewBag.Title = "Search for a Volunteer";
+}
+
+<form asp-controller="Volunteer" asp-action="SearchVol" method="get">
+    <p>
+        First Name: <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+@foreach (var item in Model)
+{
+    <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApprovalStatus)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ApprovalStatus)
+                </td>
+            </tr>
+    </table>
+
+
+
+}

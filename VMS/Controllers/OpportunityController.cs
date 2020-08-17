@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using VMS.Models;
@@ -122,6 +123,16 @@ namespace VMS.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public async Task<ActionResult> SearchOpp(string searchString)
+        {
+            var opportunities = from v in db.Opportunities select v;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                opportunities = opportunities.Where(s => s.Title.Contains(searchString));
+            }
+            return View(await opportunities.ToListAsync());
         }
     }
 }
