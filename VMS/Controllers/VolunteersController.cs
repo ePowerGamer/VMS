@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using VMS.Models;
@@ -14,6 +15,11 @@ namespace VMS.Controllers
     public class VolunteersController : Controller
     {
         private VolunteerContext db = new VolunteerContext();
+
+        public VolunteersController()
+        {
+
+        }
 
         // GET: Volunteers
         public ActionResult Index()
@@ -173,6 +179,15 @@ namespace VMS.Controllers
                 return View(matches.Distinct());
             }
 
+        }
+        public async Task<ActionResult> SearchVol(string searchString)
+        {
+            var volunteers = from v in db.Volunteers select v;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                volunteers = volunteers.Where(s => s.FirstName.Contains(searchString));
+            }
+            return View(await volunteers.ToListAsync());
         }
     }
 }

@@ -9,16 +9,16 @@ namespace VMS.Models
 {
     public class AccountModel
     {
+        
         [Key]
         public string Username { get; set; }
 
-
+        
         public string Password { get; set; }
 
         public string Salt { get; set; }
         public string Role { get; set; }
     }
-
     public class AccountContext : DbContext
     {
         public AccountContext() : base("VMSdb")
@@ -28,4 +28,5 @@ namespace VMS.Models
 
         public DbSet<AccountModel> Accounts { get; set; }
     }
+
 }
